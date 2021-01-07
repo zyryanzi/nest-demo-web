@@ -2,7 +2,7 @@
   <a-config-provider :locale="currentLanguage">
     <div id="app">
       <full-loading :show="fullLoading" :text="loadingText">
-        <img src="./assets/logo.png">
+        <img src="./assets/mylogo.png">
         <div>
           <p>
             If Element is successfully added to this project, you'll see an
