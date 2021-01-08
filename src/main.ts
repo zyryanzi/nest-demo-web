@@ -3,7 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import {AppConfig} from "@/config/app";
+import {AppConfig} from "@/config/app"
+import {loadAllPlugins} from '@/plugins'
+import {registeGlobalComponent} from "@/components/index";
+
 
 // import Cookies from 'js-cookie'
 
@@ -13,10 +16,9 @@ import {AppConfig} from "@/config/app";
 
 const app: ReturnType<typeof createApp> = createApp(App)
 app.config.globalProperties = AppConfig
+// 加载全部 Plugins
+loadAllPlugins(app)
+// 注册全局组件
+registeGlobalComponent(app)
 
 app.use(store).use(router).mount('#app')
-// app.use(mavonEditor)
-
-/*app.use(Element, {
-    size: Cookies.get('size') || 'small' // set element-ui default size
-})*/
