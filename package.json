@@ -37,6 +37,8 @@
     "node-sass": "^4.9.2",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
-    "typescript": "~3.9.3"
+    "style-resources-loader": "^1.4.1",
+    "typescript": "~3.9.3",
+    "vue-cli-plugin-style-resources-loader": "~0.1.4"
   }
 }

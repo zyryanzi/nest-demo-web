@@ -1,9 +1,6 @@
 <template>
     <a-config-provider :locale="currentLanguage">
         <div id="app">
-            <full-loading :show="fullLoading" :text="loadingText">
-                <img src="./assets/mylogo.png">
-            </full-loading>
             <app-layout/>
         </div>
     </a-config-provider>
