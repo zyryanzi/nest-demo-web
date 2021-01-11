@@ -1,7 +1,8 @@
 <template>
     <a-config-provider :locale="currentLanguage">
         <div id="app">
-            <app-layout/>
+            <full-loading :show="fullLoading" :text="loadingText" />
+            <app-layout />
         </div>
     </a-config-provider>
 </template>
@@ -9,6 +10,7 @@
 <script lang="ts">
     import {computed, defineComponent} from 'vue'
     import AppLayout from '@/layout/AppLayout.vue'
+    import {Locales} from "@/i18n/index";
     import {useStore} from "vuex";
     import {StateType} from '@/@types'
 
@@ -17,12 +19,13 @@
             const store = useStore<StateType>()
             const fullLoading = computed(() => store.state.app.fullLoading)
             const loadingText = computed(() => store.state.app.loadingText)
-            // const currentLanguage = computed(() => Locales[store.state.app.language])
+            const currentLanguage = computed(() => Locales[store.state.app.language])
 
             return {
+                currentLanguage,
                 loadingText,
                 fullLoading,
-
+                Locales
             }
         },
         components: {
@@ -68,11 +71,9 @@
 
     #nav {
         padding: 30px;
-
         a {
             font-weight: bold;
             color: #2c3e50;
-
             &.router-link-exact-active {
                 color: #42b983;
             }

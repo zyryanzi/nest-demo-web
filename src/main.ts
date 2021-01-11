@@ -7,6 +7,10 @@ import {AppConfig} from "@/config/app"
 import {loadAllPlugins} from '@/plugins'
 import {registeGlobalComponent} from "@/components/index";
 
+// 语言国际化
+import '@/i18n/index'
+import './styles/antd.less'
+
 
 // import Cookies from 'js-cookie'
 

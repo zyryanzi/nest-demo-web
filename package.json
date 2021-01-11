@@ -17,6 +17,7 @@
     "mavon-editor": "^2.9.1",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
+    "vue-composable": "^1.0.0-beta.14",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0",
     "vuex-persistedstate": "^4.0.0-beta.2"

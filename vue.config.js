@@ -2,7 +2,7 @@ const IS_DEV = process.env.NODE_ENV !== 'production'
 
 /**
  * 开发环境
- * @param {} webpackConfig 
+ * @param {} webpackConfig
  */
 const DEVELOPMENT = webpackConfig => {
     /**
@@ -24,7 +24,7 @@ const DEVELOPMENT = webpackConfig => {
 /**
  * 生产环境
  * 每个 loader/plugin 都有启动时间。尽量少使用不同的工具
- * @param {*} webpackConfig 
+ * @param {*} webpackConfig
  */
 const PRODUCTION = webpackConfig => {
     // 不需要启用 source-map
@@ -57,7 +57,11 @@ const PRODUCTION = webpackConfig => {
 }
 
 module.exports = {
-    publicPath: IS_DEV ? '/' : 'nest-demo-web',
+    publicPath: IS_DEV ? '/' : '/nest-demo-web/',
+    outputDir: 'dist',
+    assetsDir: './src/assets',
+    // indexPath: '', // 指定生成的 index.html 的输出路径 (相对于 outputDir)。也可以是一个绝对路径。
+    integrity: true,
     css: {
         loaderOptions: {
             less: {
@@ -70,7 +74,9 @@ module.exports = {
         }
     },
     devServer: {
-        proxy: 'http://localhost:8002'
+        host: '127.0.0.1',
+        port: 50505,
+        proxy: 'http://localhost:50504'
     },
     pluginOptions: {
         'style-resources-loader': {

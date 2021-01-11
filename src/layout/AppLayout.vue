@@ -3,10 +3,10 @@
         <router-view v-if="fullScreenMode"/>
         <div class="app-content" v-else>
             <app-header/>
-            <div id="nav">
-                <router-link to="/">Home</router-link>
-                <router-link to="/about">About</router-link>
-                <router-link to="/contact">Contact</router-link>
+            <div id="nav" class="nav">
+                <router-link class="nav-btn" to="/">Home</router-link>
+                <router-link class="nav-btn" to="/about">About</router-link>
+                <router-link class="nav-btn" to="/contact">Contact</router-link>
             </div>
             <router-view/>
             <app-footer/>
@@ -48,5 +48,11 @@
     .router-view {
         margin: 0;
         padding: 0;
+    }
+    .nav {
+        padding-right: 30px;
+    }
+    .nav-btn {
+        margin-left: 20px;
     }
 </style>

@@ -8,7 +8,7 @@ import createPersistedState from 'vuex-persistedstate'
 export const key: InjectionKey<Store<StateType>> = Symbol()
 
 export default createStore({
-    state: {},
+    // state: {},
     strict: true,
     mutations,
     actions: {},
