@@ -1,6 +1,7 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 // 自动加载其他路由模块
 const files = require.context('.', true, /\.ts$/)
@@ -26,6 +27,11 @@ const routes: Array<RouteRecordRaw> = [
         // which is lazy-loaded when the route is visited.
         // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
         component: About
+    },
+    {
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: Dashboard
     }
 ]
 

@@ -1,3 +1,4 @@
+/*
 import {debounce} from '@/utils'
 
 export default {
@@ -52,4 +53,4 @@ export default {
             this.$_sidebarElm && this.$_sidebarElm.removeEventListener('transitionend', this.$_sidebarResizeHandler)
         }
     }
-}
+}*/

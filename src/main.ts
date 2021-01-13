@@ -2,6 +2,7 @@ import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// import CompositionAPI from '@vue/composition-api'
 
 import {AppConfig} from "@/config/app"
 import {loadAllPlugins} from '@/plugins'
