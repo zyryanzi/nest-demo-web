@@ -1,5 +1,15 @@
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
+const path = require('path')
+const defaultSettings = require('./src/settings.js')
+
+function resolve(dir) {
+    return path.join(__dirname, dir)
+}
+
+const name = defaultSettings.title // 网址标题
+const port = 50504 // 后端端口配置
+
 /**
  * 开发环境
  * @param {} webpackConfig
@@ -75,7 +85,7 @@ module.exports = {
     },
     devServer: {
         host: '127.0.0.1',
-        port: 50505,
+        port: port,
         proxy: 'http://localhost:50504'
     },
     pluginOptions: {
@@ -84,15 +94,41 @@ module.exports = {
             patterns: ['./src/styles/index.less']
         }
     },
-    // 去掉 console
+    /**
+     configureWebpack是调整webpack配置最简单的一种方式，可以新增也可以覆盖cli中的配置。
+     可以是一个对象：被 webpack-merge 合并到 webpack 的设置中去
+     也可以是一个函数：如果你需要基于环境有条件地配置行为，就可以进行一些逻辑处理，可以直接修改或
+     新增配置，(该函数会在环境变量被设置之后懒执行)。该方法的第一个参数会收到已经解析好的配置。
+     在函数内，你可以直接修改配置，或者返回一个将会被合并的对象。
+     */
     configureWebpack: config => {
+        config.name = name
+        config.resolve.alias['@'] = resolve('src')
         if (!IS_DEV) {
+            // 去掉 console
             config.optimization.minimizer[0].options.terserOptions.compress.dropConsole = true
             config.optimization.minimizer[0].options.terserOptions.sourceMap = false
         }
     },
     chainWebpack: config => {
         IS_DEV ? DEVELOPMENT(config) : PRODUCTION(config)
+
+        // set svg-sprite-loader
+        config.module
+            .rule('svg')
+            .exclude.add(resolve('src/assets/icons'))
+            .end()
+        config.module
+            .rule('icons')
+            .test(/\.svg$/)
+            .include.add(resolve('src/assets/icons'))
+            .end()
+            .use('svg-sprite-loader')
+            .loader('svg-sprite-loader')
+            .options({
+                symbolId: 'icon-[name]'
+            })
+            .end()
     },
     productionSourceMap: false,
     lintOnSave: true

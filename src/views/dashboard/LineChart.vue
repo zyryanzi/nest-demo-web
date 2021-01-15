@@ -1,13 +1,16 @@
 <template>
-    <div :class="className" :style="{height:height,width:width}" />
+    <div :class="className" :style="{height:height,width:width}"/>
 </template>
 
 <script>
     import echarts from 'echarts'
-    require('echarts/theme/macarons')
+    import {defineComponent} from "vue";
+
+    require('echarts/theme/macarons') // echarts theme
     // import resize from './mixins/resize'
 
-    export default {
+    export default defineComponent({
+        // mixins: [resize],
         props: {
             className: {
                 type: String,
@@ -49,7 +52,7 @@
             })
         },
         onBeforeUnmount() {
-            if (!this.chart){
+            if (!this.chart) {
                 return
             }
             this.chart.dispose()
@@ -61,7 +64,7 @@
                 this.setOptions(this.chartData)
             },
             setOptions({expectedData, actualData} = {}) {
-                this.chart.setOptions({
+                this.chart.setOption({
                     xAxis: {
                         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                         boundaryGap: false,
@@ -133,5 +136,5 @@
                 })
             }
         }
-    }
+    })
 </script>
