@@ -1,8 +1,8 @@
 <template>
     <div class="icons-container">
         <aside>
-            <!--<a href="https://panjiachen.github.io/vue-element-admin-site/guide/advanced/icon.html" target="_blank">Add and use
-            </a>-->
+            <a href="https://panjiachen.github.io/vue-element-admin-site/guide/advanced/icon.html" target="_blank">Add and use
+            </a>
         </aside>
         <a-tabs type="card">
             <a-tab-pane tab="Icons">

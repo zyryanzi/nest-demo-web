@@ -88,7 +88,7 @@
             PieChart,
             BarChart
         },
-        setup(props, context) {
+        setup() {
             const data = reactive({
                 lineChartData: lineChartData.get('newVisitis')
             })

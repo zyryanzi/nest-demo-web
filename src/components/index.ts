@@ -16,13 +16,11 @@ export function registeGlobalComponent(app: ReturnType<typeof createApp>) {
     const files = require.context('./global', true, /\.(vue|ts)$/)
     files.keys().forEach(k => {
         const config = files(k)
-        console.log('---k: ', k)
         let name = kebabCase(k.replace(/^\.\//, ''))
             .replace(/\.\w+$/, '')
         name = name.slice(0, name.lastIndexOf('-vue'))
         app.component(name, config.default || config)
-        console.log('--- register component: ', name)
     })
-
-    // app.component('IconFont', IconFont)
+    console.log('--- iconfont: ', IconFont)
+    app.component('IconFont', IconFont)
 }

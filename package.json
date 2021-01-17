@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "cross-env NODE_ENV=development vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -18,7 +18,7 @@
     "less-loader": "^7.2.1",
     "mavon-editor": "^2.9.1",
     "mixin-deep": "^2.0.1",
-    "svg-sprite-loader": "^5.2.1",
+    "url-loader": "^4.1.1",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
     "vue-composable": "^1.0.0-beta.14",
@@ -38,12 +38,14 @@
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-typescript": "^5.0.2",
+    "cross-env": "^7.0.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0-0",
     "node-sass": "^4.9.2",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "style-resources-loader": "^1.4.1",
+    "svg-sprite-loader": "^5.2.1",
     "typescript": "~3.9.3",
     "vue-cli-plugin-style-resources-loader": "~0.1.4"
   }

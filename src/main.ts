@@ -13,10 +13,10 @@ import '@/i18n/index'
 import Button from 'ant-design-vue/lib/button'
 import 'ant-design-vue/dist/antd.less'
 // import './styles/antd.less'
+import '@/icons'
 
 const app: ReturnType<typeof createApp> = createApp(
-    App,
-    {}
+    App
 )
 app.config.globalProperties = AppConfig
 app.component(Button.name, Button)

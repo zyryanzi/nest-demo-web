@@ -1,63 +1,17 @@
 <template>
     <div v-if="isExternal" :style="styleExternalIcon" class="svg-external-icon svg-icon" v-bind="$attrs"/>
     <svg v-else :class="svgClass" aria-hidden="true" v-bind="$attrs">
-        <use :href="iconName"/>
+        <use :href="iconName" />
     </svg>
 </template>
 
 <script>
     // doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
     import {isExternal} from '@/utils/validate'
-    import {defineComponent, reactive, computed, ref} from 'vue'
+    import {defineComponent} from 'vue'
 
-    const SvgIcon = defineComponent({
-        /*props: {
-            iconClass: {
-                type: String,
-                required: true
-            },
-            className: {
-                type: String,
-                default: ''
-            }
-        },*/
-        /*setup(props, context) {
-            /!*const iconClass = reactive({
-                type: String,
-                required: true
-            })
-            const className = reactive({
-                type: String,
-                default: ''
-            })*!/
-            const iconClass = {
-                type: String,
-                required: true
-            }
-            const className = {
-                type: String,
-                default: ''
-            }
-            const isExternal = computed(() => {
-                return isExternal(iconClass)
-            })
-            const iconName = computed(() => {
-                return `#icon-${iconClass}`
-            })
-            const svgClass = computed(() => {
-                if (className) {
-                    return 'svg-icon ' + className
-                } else {
-                    return 'svg-icon'
-                }
-            })
-            const styleExternalIcon = computed(() => {
-                return {
-                    mask: `url(${iconClass}) no-repeat 50% 50%`,
-                    '-webkit-mask': `url(${iconClass}) no-repeat 50% 50%`
-                }
-            })
-        },*/
+    export default defineComponent({
+        name: 'SvgIcon',
         props: {
             iconClass: {
                 type: String,
@@ -90,11 +44,9 @@
             }
         }
     })
-
-    export default SvgIcon
 </script>
 
-<style scoped>
+<style lang="less" scoped>
     .svg-icon {
         width: 1em;
         height: 1em;
@@ -102,7 +54,6 @@
         fill: currentColor;
         overflow: hidden;
     }
-
     .svg-external-icon {
         background-color: currentColor;
         mask-size: cover !important;

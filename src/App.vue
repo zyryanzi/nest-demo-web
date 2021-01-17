@@ -1,7 +1,7 @@
 <template>
     <a-config-provider :locale="currentLanguage">
         <div id="app">
-            <full-loading :show="fullLoading" :text="loadingText" />
+            <!-- <full-loading :show="fullLoading" :text="loadingText" /> -->
             <app-layout />
         </div>
     </a-config-provider>

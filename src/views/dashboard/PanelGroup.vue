@@ -57,17 +57,13 @@
 
 <script>
     import CountTo from 'vue-count-to'
-    import {defineComponent, reactive} from "vue";
+    import {defineComponent} from "vue";
 
-    export default defineComponent({
+    const PanelGroup = defineComponent({
         component: {
             CountTo
         },
-        // emits: ['handleSetLineChartData'],
         setup(props, context){
-            const data = reactive({
-
-            })
             const handleSetLineChartData = (type) => {
                 context.emit('handleSetLineChartData', type)
             }
@@ -76,6 +72,7 @@
             }
         }
     })
+    export default PanelGroup
 </script>
 
 <style lang="less" scoped>

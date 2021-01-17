@@ -8,7 +8,7 @@ function resolve(dir) {
 }
 
 const name = defaultSettings.title // 网址标题
-const port = 50504 // 后端端口配置
+const port = 50505 // 前端端口
 
 /**
  * 开发环境
@@ -69,7 +69,7 @@ const PRODUCTION = webpackConfig => {
 module.exports = {
     publicPath: IS_DEV ? '/' : '/nest-demo-web/',
     outputDir: 'dist',
-    assetsDir: './src/assets',
+    assetsDir: 'static',
     // indexPath: '', // 指定生成的 index.html 的输出路径 (相对于 outputDir)。也可以是一个绝对路径。
     integrity: true,
     css: {
@@ -86,7 +86,7 @@ module.exports = {
     devServer: {
         host: '127.0.0.1',
         port: port,
-        proxy: 'http://localhost:50504'
+        // proxy: 'http://localhost:50504'
     },
     pluginOptions: {
         'style-resources-loader': {
@@ -114,21 +114,27 @@ module.exports = {
         IS_DEV ? DEVELOPMENT(config) : PRODUCTION(config)
 
         // set svg-sprite-loader
-        config.module
-            .rule('svg')
-            .exclude.add(resolve('src/assets/icons'))
-            .end()
-        config.module
-            .rule('icons')
-            .test(/\.svg$/)
-            .include.add(resolve('src/assets/icons'))
-            .end()
-            .use('svg-sprite-loader')
-            .loader('svg-sprite-loader')
-            .options({
-                symbolId: 'icon-[name]'
-            })
-            .end()
+        const svgRule = config.module.rule('svg');
+        // 清除已有的所有 loader。
+        // 如果你不这样做，接下来的 loader 会附加在该规则现有的 loader 之后。
+        svgRule.uses.clear();
+        svgRule
+        .test(/\.svg$/)
+        .include.add(resolve('./src/icons/svg'))
+        .end()
+        .use('svg-sprite-loader')
+        .loader('svg-sprite-loader')
+        .options({
+            symbolId: 'icon-[name]'
+        });
+        const fileRule = config.module.rule('file');
+        fileRule.uses.clear();
+        fileRule
+        .test(/\.svg$/)
+        .exclude.add(resolve('./src/icons/svg'))
+        .end()
+        .use('file-loader')
+        .loader('file-loader');
     },
     productionSourceMap: false,
     lintOnSave: true

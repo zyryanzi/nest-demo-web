@@ -11,8 +11,7 @@
 </template>
 
 <script lang="ts">
-    import {Options, Vue, setup} from 'vue-class-component'; // @ is an alias to /src
-    import {defineComponent} from 'vue'
+    import {Options, Vue} from 'vue-class-component'; // @ is an alias to /src
     import HelloWorld from "@/components/HelloWorld.vue";
 
 @Options({
