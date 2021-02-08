@@ -16,6 +16,20 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         '@typescript-eslint/no-var-requires': 0,
         'no-useless-escape': 'off',
-        '@typescript-eslint/no-explicit-any': 'off'
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/camelcase': 'off',
+        '@typescript-eslint/member-delimiter-style': [
+            2,
+            {
+                multiline: {
+                    delimiter: 'none',
+                    requireLast: true,
+                },
+                singleline: {
+                    delimiter: 'semi',
+                    requireLast: false,
+                },
+            },
+        ],
     }
 }

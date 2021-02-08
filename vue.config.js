@@ -1,9 +1,9 @@
 const IS_DEV = process.env.NODE_ENV !== 'production'
 
 const path = require('path')
-const defaultSettings = require('./src/settings.js')
+const defaultSettings = require('./src/settings.ts')
 
-function resolve(dir) {
+function resolve (dir) {
     return path.join(__dirname, dir)
 }
 
@@ -77,6 +77,11 @@ module.exports = {
             less: {
                 sourceMap: IS_DEV,
                 lessOptions: {
+                    modifyVars: {
+                        'primary-color': '#1DA57A',
+                        'link-color': '#1DA57A',
+                        'border-radius-base': '2px',
+                    },
                     javascriptEnabled: true,
                     globalVars: {}
                 }
@@ -85,7 +90,7 @@ module.exports = {
     },
     devServer: {
         host: '127.0.0.1',
-        port: port,
+        port: port
         // proxy: 'http://localhost:50504'
     },
     pluginOptions: {
@@ -119,22 +124,22 @@ module.exports = {
         // 如果你不这样做，接下来的 loader 会附加在该规则现有的 loader 之后。
         svgRule.uses.clear();
         svgRule
-        .test(/\.svg$/)
-        .include.add(resolve('./src/icons/svg'))
-        .end()
-        .use('svg-sprite-loader')
-        .loader('svg-sprite-loader')
-        .options({
-            symbolId: 'icon-[name]'
-        });
+            .test(/\.svg$/)
+            .include.add(resolve('./src/icons/svg'))
+            .end()
+            .use('svg-sprite-loader')
+            .loader('svg-sprite-loader')
+            .options({
+                symbolId: 'icon-[name]'
+            });
         const fileRule = config.module.rule('file');
         fileRule.uses.clear();
         fileRule
-        .test(/\.svg$/)
-        .exclude.add(resolve('./src/icons/svg'))
-        .end()
-        .use('file-loader')
-        .loader('file-loader');
+            .test(/\.svg$/)
+            .exclude.add(resolve('./src/icons/svg'))
+            .end()
+            .use('file-loader')
+            .loader('file-loader');
     },
     productionSourceMap: false,
     lintOnSave: true

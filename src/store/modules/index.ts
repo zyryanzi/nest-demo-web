@@ -13,5 +13,4 @@ files.keys().forEach(key => {
     }
     modules[namespace][imported] = files(key).default
 })
-
 export default modules

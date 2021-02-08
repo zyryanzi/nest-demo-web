@@ -1,8 +1,8 @@
-import {StateType} from "@/@types";
-import {Module} from "vuex";
+import {StateType} from "@/@types"
+import {Module} from "vuex"
 
 interface Token {
-    [properties: string]: any;
+    [properties: string]: any
 }
 
 const state = {

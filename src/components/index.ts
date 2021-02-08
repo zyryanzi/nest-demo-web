@@ -21,6 +21,5 @@ export function registeGlobalComponent(app: ReturnType<typeof createApp>) {
         name = name.slice(0, name.lastIndexOf('-vue'))
         app.component(name, config.default || config)
     })
-    console.log('--- iconfont: ', IconFont)
     app.component('IconFont', IconFont)
 }

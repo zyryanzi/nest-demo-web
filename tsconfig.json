@@ -26,14 +26,15 @@
       "dom.iterable",
       "scripthost"
     ],
-    "allowJs": true
+    "allowJs": false
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "src/settings.ts"
   ],
   "exclude": [
     "node_modules"

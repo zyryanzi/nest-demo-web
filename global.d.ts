@@ -1,11 +1,11 @@
 /**
  * 将第三方变量挂载到每一个 vue 示例中
  */
-import {Message} from "ant-design-vue/@types/message";
+import message from "ant-design-vue"
 
 declare module '@vue/runtime-core' {
     interface ComponentCustomProperties {
-        $message: Message
+        $message: message
     }
 }
 
